@@ -1,6 +1,6 @@
 # User Service  
 
-#### Initial User Service project  
+#### I. Initial User Service project  
 
 We should go to https://start.spring.io/  for generate new project or 
 creating by IntelliJ IDEA tool.
@@ -11,7 +11,7 @@ _Note_:
 2. Change Port, Goto resources > application.properties
 Append line:
 > server.port=8001  
-#### Setting up auto compiler
+#### II. Setting up auto compiler
 
 In IDEA tool  
 1. **[Press Ctl + Shift + a]** or **[Menu > Help > Find Action]** > Select **Registry...** and then checked on **compiler.automake.allow.when.app.running**  
@@ -27,10 +27,10 @@ Append some line code bellow to pom.xml
     <optional>true</optional>
 </dependency>
 ```
-#### User 3-tier design  
+#### III. User 3-tier design  
 [Presentation Layer] --> [Service Layer] --> [Data Access Layer]
 
-Add 2 libraries   
+Add 2 libraries for access with DB.
 
 ```
 <dependency>
@@ -56,3 +56,56 @@ spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
 And verify by the way goto http://localhost:8001/h2-console
 
 verify and test connection, make sure that it will be matched with your configuration.
+
+#### IV. Add Lombok for generate object.
+
+```
+<dependency>
+  <groupId>org.projectlombok</groupId>
+  <artifactId>lombok</artifactId>
+  <optional>true</optional>
+</dependency>
+```
+And append inside plugin tag  
+```
+<configuration>
+  <excludes>
+    <exclude>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+    </exclude>
+  </excludes>
+</configuration>
+```
+
+#### V. Add ModelMapper
+
+please look on http://modelmapper.org/user-manual/spring-integration/ for get new version of ModelMapper.
+```
+<dependency>
+  <groupId>org.modelmapper.extensions</groupId>
+  <artifactId>modelmapper-spring</artifactId>
+  <version>2.4.2</version>
+</dependency>
+```
+
+and creating a ApplicationConfig class for register IoC of ModelMapper inside project.
+
+```
+@Configuration
+public class ApplicationConfig {
+
+    @Bean
+    public ModelMapper mapper() {
+        ModelMapper modelMapper = new ModelMapper();
+        return modelMapper;
+    }
+}
+```
+#### VI. Validation
+```
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-validation</artifactId>
+</dependency>
+```
