@@ -1,4 +1,4 @@
-package com.nghiepvo.userservice.mapper;
+package com.nghiepvo.userservice.models;
 
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class ModelMapperConfiguration {
+public class ConfigurationModelMapper {
 
     @Bean
     public ModelMapper modelMapper() {

@@ -1,4 +1,4 @@
-package com.nghiepvo.userservice.entities;
+package com.nghiepvo.userservice.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
